@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -119,3 +120,5 @@ const mapDispatchToProps = dispatch => {
     onAuth: (username, password) => dispatch(actions.authLogin(username, password))
   }
 }
+
+export default connect(null, mapDispatchToProps)(Login);
