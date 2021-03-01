@@ -23,11 +23,14 @@ export default function TopBar(props) {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            Iris Species Predictor
+            Skin Cancer Prediction
           </Typography>
           <IconButton aria-label="home page" color="inherit" href="/">
             <HomeIcon />
           </IconButton>
+          {props.isAuthenticated ? <Button color="inherit" href="/analysis">Perform Analysis</Button> : null}        
+          {props.isAuthenticated ? <Button color="inherit" href="/learn">Get Informed</Button> : null}        
+          {props.isAuthenticated ? <Button color="inherit" href="/profile">My Profile</Button> : null}        
           {props.isAuthenticated ? <Button color="inherit" href="/update_password">Update Password</Button> : null}
           {props.isAuthenticated ? <Button color="inherit" onClick={() => props.logout()}>Logout</Button> : null}
         </Toolbar>
