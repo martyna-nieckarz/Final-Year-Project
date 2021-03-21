@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    paddingBottom: '300px',
   },
   avatar: {
     margin: theme.spacing(1),
@@ -28,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: '100%',
     marginTop: theme.spacing(1),
-    paddingBottom: "180px",
   },
   submit: {
     margin: theme.spacing(3, 0, 2),

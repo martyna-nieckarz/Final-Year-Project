@@ -23,19 +23,39 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     minHeight: '1vh',
-
+    
 
   },
   main: {
     marginTop: theme.spacing(8),
     marginBottom: theme.spacing(2),
+    
   },
   footer: {
     padding: theme.spacing(2, 2),
     marginTop: 'auto',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
+    
   },
+
+  // main: {
+  //   marginTop: theme.spacing(8),
+  //   marginBottom: theme.spacing(2),
+  //   minHeight:'100%', 
+  //   position:'relative',
+  // },
+  // footer: {
+  //   padding: theme.spacing(2, 2),
+  //   marginTop: 'auto',
+  //   backgroundColor:
+  //     theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
+  //   position: 'absolute',
+  //   bottom:'0',
+  //   left:'0',
+  //   width:'100%',
+  //   height:'70px',
+  // },
 }));
 
 export default function StickyFooter() {
@@ -45,7 +65,8 @@ export default function StickyFooter() {
     <div className={classes.root}>
       <CssBaseline />
       <footer className={classes.footer}>
-        <Container maxWidth="md">
+        <Container maxWidth="md" >
+
           <Typography variant="body1">Skin Cancer Prediction</Typography>
           <Copyright />
         </Container>

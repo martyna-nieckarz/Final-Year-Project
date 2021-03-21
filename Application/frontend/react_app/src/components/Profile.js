@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   heroContent: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
+    paddingBottom: '30px',
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
+    paddingBottom: '120px',
   },
   card: {
     height: '100%',
@@ -39,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
+    
   },
 }));
 

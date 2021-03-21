@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    paddingBottom: '200px',
   },
   avatar: {
     margin: theme.spacing(1),
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: '100%',
     marginTop: theme.spacing(2),
-    paddingBottom: "60px",
+    
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -61,6 +62,8 @@ function SignUp(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     actions.authRegister(username, email, password)
+    alert("You have successfully created a profile. You can now login.");
+    history.push("/login");
   }
 
   return (
@@ -123,7 +126,7 @@ function SignUp(props) {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            Sign Up 
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
@@ -140,7 +143,7 @@ function SignUp(props) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onRegister: (username, email, password) => dispatch(actions.authRegister(username, email, password))
+    onRegister: (username, email, password) => dispatch(actions.authRegister(username, email, password)),
   }
 }
 
