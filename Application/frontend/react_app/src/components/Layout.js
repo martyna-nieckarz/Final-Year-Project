@@ -1,9 +1,7 @@
-
 import React from 'react';
 import TopBar from "./TopBar"
 import Footer from "./Footer"
 import CssBaseline from '@material-ui/core/CssBaseline';
-
 
 function Layout(props) {
     return (
@@ -15,6 +13,7 @@ function Layout(props) {
             </div>
             <Footer />
         </React.Fragment>
+        
     )
 }
 export default Layout

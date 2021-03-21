@@ -1,217 +1,169 @@
-
-import React from 'react'
-import axios from 'axios';
-import * as settings from '../settings';
-
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { Container, Grid, Paper, Typography, Slider, Button } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
-// ########################################################
-// Material UI inline styles
-// ########################################################
 const useStyles = makeStyles((theme) => ({
-    container: {
-        maxWidth: "75%",
-        marginTop: "15vh",
-        marginBottom: "10vh",
-        borderRadius: '6px',
-        backgroundColor: theme.palette.action.disabledBackground,
-    },
-    title: {
-        marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(2),
-        padding: theme.spacing(2), paddingLeft: theme.spacing(4),
-        color: theme.palette.primary.main,
-    },
-    sliders: {
-        paddingTop: theme.spacing(2),
-        paddingBottom: theme.spacing(2),
-        paddingLeft: theme.spacing(4),
-        paddingRight: theme.spacing(4),
-        marginBottom: theme.spacing(2),
-    },
-    slidertop: {
-        marginTop: theme.spacing(4),
-    }
+  icon: {
+    marginRight: theme.spacing(2),
+  },
+  heroContent: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(8, 0, 6),
+  },
+  heroButtons: {
+    marginTop: theme.spacing(4),
+  },
+  cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  cardMedia: {
+    paddingTop: '56.25%', // 16:9
+  },
+  cardContent: {
+    flexGrow: 1,
+  },
+  footer: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(6),
+  },
 }));
 
-// ########################################################
-// Our Custom IRIS slider. You may use the default slider instead of this
-// ########################################################
-const IrisSlider = withStyles({
-    root: {
-        color: '#751E66',
-    },
-    valueLabel: {
-        left: 'calc(-50% -2)',
-        top: -22,
-        '& *': {
-            background: 'transparent',
-            color: '#000',
-        },
-    },
-    mark: {
-        height: 8,
-        width: 1,
-        marginTop: -3,
-    },
-    markActive: {
-        opacity: 1,
-        backgroundColor: 'currentColor',
-    },
-})(Slider);
+const cards = [1];
 
-// Marks on the slider track
-const marks = [{ value: 0 }, { value: 10 }];
+export default function Album(props) {
+  const classes = useStyles();
 
-// ########################################################
-// The main Home component returned by this Module
-// ########################################################
-function Home(props) {
-    // Material UI Classes 
-    const classes = useStyles();
-
-    // React hook state variable - Dimensions
-    const [dimensions, setDimensions] = React.useState({
-        sepal_length: 6,
-        sepal_width: 6,
-        petal_length: 6,
-        petal_width: 6,
-    });
-    // React hook state variable - Prediction
-    const [prediction, setPrediction] = React.useState(null)
-
-    // Function to update the Dimensions state upon slider value change
-    const handleSliderChange = name => (event, newValue) => {
-        setDimensions(
-            {
-                ...dimensions,
-                ...{ [name]: newValue }
-            }
-        );
-    };
-
-    // Function to make the predict API call and update the state variable - Prediction 
-    const handlePredict = event => {
-        // Submit Iris Flower measured dimensions as form data
-        let irisFormData = new FormData();
-        irisFormData.append("sepal length (cm)", dimensions.sepal_length);
-        irisFormData.append("sepal width (cm)", dimensions.sepal_width);
-        irisFormData.append("petal length (cm)", dimensions.petal_length);
-        irisFormData.append("petal width (cm)", dimensions.petal_width);
-
-        //Axios variables required to call the predict API
-        let headers = { 'Authorization': `Token ${props.token}` };
-        let url = settings.API_SERVER + '/api/predict/';
-        let method = 'post';
-        let config = { headers, method, url, data: irisFormData };
-
-        //Axios predict API call
-        axios(config).then(
-            res => {setPrediction(res.data["Predicted Iris Species"])
-            }).catch(
-                error => {alert(error)})
-
-    }
-
-    function valuetext(value) {
-        return `${value} cm`;
-    }
-
-    return (
-        <React.Fragment>
-            <CssBaseline />
-            <Container fixed className={classes.container}>
-                <Grid container alignItems="center" spacing={3}>
-                    <Grid item xs={6}>
-                        <Paper className={classes.title} elevation={0}>
-                            <Typography variant="h5">
-                                Iris Flower Dimensions
-                            </Typography>
-                        </Paper>
-                        <Paper className={classes.sliders}>
-                            <Typography id="sepal_length" variant="caption" >
-                                Sepal Length (cm)
-                            </Typography>
-                            <IrisSlider
-                                defaultValue={6}
-                                getAriaValueText={valuetext}
-                                aria-labelledby="sepal_length"
-                                step={0.1}
-                                min={0}
-                                max={10}
-                                valueLabelDisplay="on"
-                                marks={marks}
-                                className={classes.slidertop}
-                                onChange={handleSliderChange("sepal_length")}
-                            />
-                            <Typography id="sepal_width" variant="caption" gutterBottom>
-                                Sepal Width (cm)
-                            </Typography>
-                            <IrisSlider
-                                defaultValue={6}
-                                getAriaValueText={valuetext}
-                                aria-labelledby="sepal_width"
-                                step={0.1}
-                                min={0}
-                                max={10}
-                                valueLabelDisplay="on"
-                                marks={marks}
-                                className={classes.slidertop}
-                                onChange={handleSliderChange("sepal_width")}
-                            />
-                            <Typography id="petal_length" variant="caption" gutterBottom>
-                                Petal Length (cm)
-                            </Typography>
-                            <IrisSlider
-                                defaultValue={6}
-                                getAriaValueText={valuetext}
-                                aria-labelledby="petal_length"
-                                step={0.1}
-                                min={0}
-                                max={10}
-                                valueLabelDisplay="on"
-                                marks={marks}
-                                className={classes.slidertop}
-                                onChange={handleSliderChange("petal_length")}
-                            />
-                            <Typography id="petal_width" variant="caption" gutterBottom>
-                                Petal Width (cm)
-                            </Typography>
-                            <IrisSlider
-                                defaultValue={6}
-                                getAriaValueText={valuetext}
-                                aria-labelledby="petal_width"
-                                step={0.1}
-                                min={0}
-                                max={10}
-                                valueLabelDisplay="on"
-                                marks={marks}
-                                className={classes.slidertop}
-                                onChange={handleSliderChange("petal_width")}
-                            />
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Button variant="contained" color="primary" onClick={handlePredict}>
-                            Predict
-                        </Button>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Paper className={classes.title} elevation={0}>
-                            <Typography variant="caption" display="inline">
-                                Predicted Iris Species: <span>&nbsp;</span>
-                            </Typography>
-                            <Typography variant="body1" display="inline">
-                                {prediction}
-                            </Typography>
-                        </Paper>
-                    </Grid>
+  return (
+    <React.Fragment>
+      <CssBaseline />
+      <main>
+        {/* Hero unit */}
+        <div className={classes.heroContent}>
+          <Container maxWidth="md">
+            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+              Welcome to MySkin
+            </Typography>
+            <Typography variant="h4" align="center" color="textSecondary" paragraph>
+              Have a skin lesion you're worried about? 
+            </Typography>
+            <Typography variant="h5" align="center" color="textSecondary" paragraph>
+              In just a few seconds find out about the risk of skin cancer
+            </Typography>
+            {props.isAuthenticated ? (
+              null
+            ) : (
+              <div className={classes.heroButtons}>
+                <Grid container spacing={2} justify="center">
+                  <Grid item>
+                    <Button href="/login" variant="contained" color="primary">
+                      Login
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button href="/register" variant="outlined" color="primary">
+                      Register
+                    </Button>
+                  </Grid>
                 </Grid>
-            </Container>
-        </React.Fragment>
-    )
+              </div>
+            )}
+          </Container>
+        </div>
+        <Container className={classes.cardGrid} maxWidth="md" align="center">
+          {/* End hero unit */}
+          <Grid container spacing={6}>
+            {cards.map((card) => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://source.unsplash.com/UgzTooxvIKM"
+                    title="Card Image"
+                  />
+                    <CardContent className={classes.cardContent}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        Get Informed
+                      </Typography>
+                      <Typography>
+                        Learn more about skin cancer and ways to prevent it
+                      </Typography>
+                      <br></br>
+                      <Button href="/learn" variant="contained" color="primary">
+                      Click
+                    </Button>
+                    </CardContent>
+                  <CardActions>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+            {cards.map((card) => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://source.unsplash.com/KYUiTYOaE9M"
+                    title="homeImg1"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Perform Analysis
+                    </Typography>
+                    <Typography>
+                      Upload a skin lesion image and have it analysed for skin cancer
+                    </Typography>
+                    <br></br>
+                      <Button href="/analysis" variant="contained" color="primary">
+                      Click
+                    </Button>
+                  </CardContent>
+                  <CardActions>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+            {cards.map((card) => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://source.unsplash.com/vTL_qy03D1I"
+                    title="Image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      My Profile
+                    </Typography>
+                    <Typography>
+                      Access your profile and view your previous analysis results
+                    </Typography>
+                    <br></br>
+                      <Button href="/profile" variant="contained" color="primary">
+                      Click
+                    </Button>
+                  </CardContent>
+                  <CardActions>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </main>
+    </React.Fragment>
+  );
 }
-
-export default Home

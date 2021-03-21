@@ -1,0 +1,18 @@
+Environment:
+
+fypEnv
+cd Application
+
+fypEnv\Scripts\activate
+
+backend django:
+
+python manage.py runserver
+cd C:\Users\marty\Desktop\Final Year Project\Final-Year-Project\Application\backend\django_app
+
+python manage.py runserver
+
+frontend react:
+
+cd C:\Users\marty\Desktop\Final Year Project\Final-Year-Project\Application\frontend\react_app
+npm start

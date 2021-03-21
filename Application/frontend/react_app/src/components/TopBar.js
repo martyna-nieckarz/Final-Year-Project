@@ -1,17 +1,53 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Button, IconButton } from '@material-ui/core';
-import HomeIcon from '@material-ui/icons/Home';
+import { AppBar, Toolbar, Button, IconButton } from '@material-ui/core';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Brightness1Icon from '@material-ui/icons/Brightness1';
+
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  '@global': {
+    ul: {
+      margin: 0,
+      padding: 0,
+      listStyle: 'none',
+    },
+  },
+  appBar: {
+    borderBottom: `1px solid ${theme.palette.divider}`,
+  },
+  toolbar: {
+    flexWrap: 'wrap',
+  },
+  toolbarTitle: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
+  link: {
+    margin: theme.spacing(1, 1.5),
   },
-  title: {
-    flexGrow: 1,
+  heroContent: {
+    padding: theme.spacing(8, 0, 6),
+  },
+  cardHeader: {
+    backgroundColor:
+      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
+  },
+  cardPricing: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'baseline',
+    marginBottom: theme.spacing(2),
+  },
+  footer: {
+    borderTop: `1px solid ${theme.palette.divider}`,
+    marginTop: theme.spacing(8),
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(3),
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: theme.spacing(6),
+      paddingBottom: theme.spacing(6),
+    },
   },
 }));
 
@@ -19,22 +55,25 @@ export default function TopBar(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            Skin Cancer Prediction
+    <React.Fragment>
+    <CssBaseline />
+      <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+        <Toolbar className={classes.toolbar}>
+          <Typography noWrap className={classes.toolbarTitle}>
+            <IconButton aria-label="circle" href="/"  className={classes.toolbarTitle}>
+              <Brightness1Icon style={{ color: "#2b5abe" }} />
+            </IconButton>
           </Typography>
-          <IconButton aria-label="home page" color="inherit" href="/">
-            <HomeIcon />
-          </IconButton>
-          {props.isAuthenticated ? <Button color="inherit" href="/analysis">Perform Analysis</Button> : null}        
-          {props.isAuthenticated ? <Button color="inherit" href="/learn">Get Informed</Button> : null}        
-          {props.isAuthenticated ? <Button color="inherit" href="/profile">My Profile</Button> : null}        
-          {props.isAuthenticated ? <Button color="inherit" href="/update_password">Update Password</Button> : null}
-          {props.isAuthenticated ? <Button color="inherit" onClick={() => props.logout()}>Logout</Button> : null}
+          <nav>
+            <Button color="#2b5abe" href="/">Home Page</Button>
+            {props.isAuthenticated ? <Button color="#2b5abe" href="/analysis">Analysis</Button> : null}        
+            {props.isAuthenticated ? <Button color="#2b5abe" href="/learn">Get Informed</Button> : null}      
+            {props.isAuthenticated ? <Button color="#2b5abe" href="/profile">My Profile</Button> : null}
+          </nav>
+          {props.isAuthenticated ? <Button variant="outlined" color="#2b5abe" onClick={() => props.logout()}>Logout</Button> : null}
         </Toolbar>
       </AppBar>
-    </div>
+    </React.Fragment>
   );
 }
+

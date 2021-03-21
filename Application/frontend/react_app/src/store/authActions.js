@@ -75,6 +75,7 @@ export const authCheckTimeout = expirationTime => {
 }
 
 export const authLogin = (username, password) => {
+    console.log("LOGIN")
     return dispatch => {
         dispatch(authStart());
         axios.post(`${settings.API_SERVER}/api/auth/login/`, {
@@ -93,6 +94,19 @@ export const authLogin = (username, password) => {
             dispatch(authFail(err))
         });
     }
+}
+
+export const authRegister = (username, email, password) => {
+    console.log(username, email, password)
+    axios.post("http://localhost:8000/api/auth/register/", {
+      "username": username,
+      "email": email,
+      "password": password
+    }).then((response) => {
+        console.log("Result: ", response)
+    }).catch((error) => {
+        
+    });
 }
 
 

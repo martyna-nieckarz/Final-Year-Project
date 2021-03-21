@@ -2,10 +2,19 @@ from django.apps import AppConfig
 import pandas as pd
 from joblib import load
 import os
+import torch
+from torch import nn
 
 class PredictionConfig(AppConfig):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device
+
+    # net = LeNet()
+    # net = net.to(device)
+
     name = 'prediction'
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
     MLMODEL_FOLDER = os.path.join(BASE_DIR, 'prediction/mlmodel/')
-    MLMODEL_FILE = os.path.join(MLMODEL_FOLDER, "IRISRandomForestClassifier.joblib")
-    mlmodel = load(MLMODEL_FILE)
+    MLMODEL_FILE = os.path.join(MLMODEL_FOLDER, "model.pth")
+    mlmodel = torch.load(MLMODEL_FILE)
