@@ -9,9 +9,6 @@ class PredictionConfig(AppConfig):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     device
 
-    # net = LeNet()
-    # net = net.to(device)
-
     name = 'prediction'
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
