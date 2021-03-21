@@ -19,7 +19,7 @@ class APILoginView(LoginView):
 class APIPasswordUpdateView(PasswordChangeView):
     authentication_classes = [TokenAuthentication]
 
-class UserCreate(APIView):
+class APIUserCreate(APIView):
     """ 
     Creates the user 
     """

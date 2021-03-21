@@ -109,7 +109,6 @@ export const authRegister = (username, email, password) => {
     });
 }
 
-
 export const authCheckState = () => {
     return dispatch => {
         const token = localStorage.getItem('token');

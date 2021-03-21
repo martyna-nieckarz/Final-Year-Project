@@ -7,7 +7,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 
 const axios = require("axios");
-
 const cards = [1];
 
 export default class Analysis extends React.Component {

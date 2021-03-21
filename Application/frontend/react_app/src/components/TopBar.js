@@ -61,16 +61,16 @@ export default function TopBar(props) {
         <Toolbar className={classes.toolbar}>
           <Typography noWrap className={classes.toolbarTitle}>
             <IconButton aria-label="circle" href="/"  className={classes.toolbarTitle}>
-              <Brightness1Icon style={{ color: "#2b5abe" }} />
+              <Brightness1Icon style={{ color: "2b5abe" }} />
             </IconButton>
           </Typography>
           <nav>
-            <Button color="#2b5abe" href="/">Home Page</Button>
-            {props.isAuthenticated ? <Button color="#2b5abe" href="/analysis">Analysis</Button> : null}        
-            {props.isAuthenticated ? <Button color="#2b5abe" href="/learn">Get Informed</Button> : null}      
-            {props.isAuthenticated ? <Button color="#2b5abe" href="/profile">My Profile</Button> : null}
+            <Button color="default" href="/">Home Page</Button>
+            {props.isAuthenticated ? <Button color="default" href="/analysis">Analysis</Button> : null}        
+            {props.isAuthenticated ? <Button color="default" href="/learn">Get Informed</Button> : null}      
+            {props.isAuthenticated ? <Button color="default" href="/profile">My Profile</Button> : null}
           </nav>
-          {props.isAuthenticated ? <Button variant="outlined" color="#2b5abe" onClick={() => props.logout()}>Logout</Button> : null}
+          {props.isAuthenticated ? <Button variant="outlined" color="default" onClick={() => props.logout()}>Logout</Button> : null}
         </Toolbar>
       </AppBar>
     </React.Fragment>

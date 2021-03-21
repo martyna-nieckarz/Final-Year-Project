@@ -12,8 +12,6 @@ import Container from '@material-ui/core/Container';
 import { connect } from 'react-redux';
 import * as actions from '../store/authActions';
 import { useHistory, useLocation } from "react-router-dom";
-import axios from 'axios';
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -27,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(2),
     paddingBottom: "60px",
   },
@@ -38,8 +36,6 @@ const useStyles = makeStyles((theme) => ({
 
 function SignUp(props) {
   const classes = useStyles();
-  // const [firstName, setuserFirstName] = React.useState(null);
-  // const [lastName, setuserLastName] = React.useState(null);
   const [username, setuserName] = React.useState(null);
   const [email, setuserEmail] = React.useState(null);
   const [password, setPassword] = React.useState(null);
@@ -54,8 +50,6 @@ function SignUp(props) {
 
   const handleFormFieldChange = (event) => {
     switch (event.target.id) {
-      // case 'firstName': setuserFirstName(event.target.value); break;
-      // case 'lastName': setuserLastName(event.target.value); break;
       case 'username': setuserName(event.target.value); break;
       case 'email': setuserEmail(event.target.value); break;
       case 'password': setPassword(event.target.value); break;
@@ -81,29 +75,6 @@ function SignUp(props) {
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={1}>
-            {/* <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid> */}
             <Grid item xs={12}>
             <TextField
               variant="outlined"
