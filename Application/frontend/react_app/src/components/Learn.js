@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1];
 
-export default function Album() {
+export default function Learn() {
   const classes = useStyles();
 
   return (
@@ -238,7 +238,7 @@ export default function Album() {
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image="https://dermnetnz.org/assets/Uploads/lesions/patch2__ProtectWyJQcm90ZWN0Il0_FocusFillWzI5NCwyMjIsIngiLDE1XQ.jpg"
+                      image="http://www.meddean.luc.edu/lumen/MedEd/medicine/dermatology/melton/ks1.jpg"
                       title="Patch Stage KS"
                     />
                     <CardContent className={classes.cardContent}>
@@ -247,9 +247,9 @@ export default function Album() {
                       </Typography>
                       <Typography>
                       <p style={{textAlign: 'justify'}}>
-                      Kaposi sarcoma (KS) is a cancer that causes patches of abnormal tissue to grow under the skin, in the lining of the mouth, nose, and throat, in lymph nodes, or in other organs. 
-                      These patches, or lesions, are usually red or purple. They are made of cancer cells, blood vessels, and blood cells.
-                      KS can cause serious problems or even become life threatening when the lesions are in the lungs, liver, or digestive tract.
+                        Kaposi sarcoma (KS) is a cancer that causes patches of abnormal tissue to grow under the skin, in the lining of the mouth, nose, and throat, in lymph nodes, or in other organs. 
+                        These patches, or lesions, are usually red or purple. They are made of cancer cells, blood vessels, and blood cells.
+                        KS can cause serious problems or even become life threatening when the lesions are in the lungs, liver, or digestive tract.
                       </p>                    
                       </Typography>
                     </CardContent>

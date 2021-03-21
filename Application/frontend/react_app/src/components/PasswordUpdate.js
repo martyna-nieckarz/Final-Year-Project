@@ -1,12 +1,9 @@
-
 import React from 'react';
 import axios from 'axios';
 import * as settings from '../settings';
-
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Button, Container, CssBaseline, TextField, Typography } from '@material-ui/core';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {

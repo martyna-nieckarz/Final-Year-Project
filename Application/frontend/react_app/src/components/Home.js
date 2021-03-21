@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1];
 
-export default function Album(props) {
+export default function Home(props) {
   const classes = useStyles();
 
   return (

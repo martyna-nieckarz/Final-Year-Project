@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1];
 
-export default function Album(props) {
+export default function Profile(props) {
   const classes = useStyles();
 
   return (
@@ -57,7 +57,7 @@ export default function Album(props) {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="md">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            <Typography component="h2" variant="h2" align="center" color="textPrimary" gutterBottom>
                 Welcome to Your Profile
             </Typography>
             <Typography variant="h4" align="center" color="textSecondary" paragraph>

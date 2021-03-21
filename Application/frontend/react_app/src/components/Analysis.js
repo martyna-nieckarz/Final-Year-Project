@@ -70,6 +70,7 @@ export default class Analysis extends React.Component {
                         </Typography>
                         <Typography variant="h6" align="center" color="textSecondary" paragraph>
                             Disclamer: This site is not a replacement for a professional diagnois and the skin lesion analysis service on this site is for academic and experimental purposes only. 
+                            The algorithm is not 100% accurate. 
                         </Typography>
                     </Container >
                 </div>
