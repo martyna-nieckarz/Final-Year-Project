@@ -34,3 +34,11 @@ class APIUserCreate(APIView):
                 return Response(json, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class APIUserDetails(APIView):
+    def post(self, request, format='json'):
+        print("###### GET USER DATA: ", request.data)
+        username = request.user.username
+        print("# Username", username)
+
+        return Response("Succ", status=200) 
