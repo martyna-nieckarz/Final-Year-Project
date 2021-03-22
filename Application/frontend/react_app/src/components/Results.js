@@ -10,7 +10,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import * as ServerRequests from '../store/ServerRequests';
+//import * as ServerRequests from '../store/ServerRequests';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -46,19 +46,20 @@ function createData(username, imageid, analysisResult, timeDate) {
  }
  
  const rows = [
-   createData(usernameData),
-   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+   //createData(usernameData),
  ];
 
 export default function Results(props) {
     const classes = useStyles();
 
-    ServerRequests.getUserDetails().then((response) => {
-        console.log("Result: ", response)
-        usernameData = response.data
-    }).catch((error) => {
-        console.log(error)
-    });
+    // ServerRequests.getUserDetails().then((response) => {
+    //     console.log("Result: ", response)
+    //     var username = response.data.username
+    //     console.log("Result 1: ", username)
+    //     //{this.state.resultData}
+    // }).catch((error) => {
+    //     console.log(error)
+    // });
 
     return (
         <React.Fragment>

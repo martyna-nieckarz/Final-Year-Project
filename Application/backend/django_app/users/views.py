@@ -8,6 +8,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
+from django.db import connection
+
 
 class APILogoutView(LogoutView):
     authentication_classes = [TokenAuthentication]
@@ -35,10 +37,19 @@ class APIUserCreate(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class APIUserDetails(APIView):
-    def post(self, request, format='json'):
-        print("###### GET USER DATA: ", request.data)
-        username = request.user.username
-        print("# Username", username)
+# class APIUserDetails(APIView):
+#     def post(self, request, format='json'):
+#         print("###### GET USER DATA: ", request.data)
+#         userData = request.data
+#         print("###### GET USER DATA: ", request.data)
+#         username = request.user.username
+#         email = request.user.email   
+#         print("# Username", username)
+#         print("# email", username)
 
-        return Response("Succ", status=200) 
+#         cursor = connection.cursor()
+#         query = "SELECT username, email FROM auth_user"
+#         cursor.execute(query)
+        
+
+#         return Response(username, status=200) 

@@ -31,7 +31,7 @@ class SkinCancerPredict(APIView):
 
     labelsTEST = ['akiec', 'bcc', 'bkl', 'df', 'nv', 'vasc','mel']
     imsize_TEST = 224
-    loader_TEST = transforms.Compose([transforms.Scale(imsize_TEST), transforms.ToTensor()])
+    loader_TEST = transforms.Compose([transforms.Resize(imsize_TEST), transforms.ToTensor()])
 
     def image_loader_TEST(self, image_name):
 
