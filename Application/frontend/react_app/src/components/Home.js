@@ -92,7 +92,7 @@ export default function Home(props) {
                   <CardMedia
                     className={classes.cardMedia}
                     image="https://source.unsplash.com/UgzTooxvIKM"
-                    title="Card Image"
+                    title="Home Image 1"
                   />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2">
@@ -117,7 +117,7 @@ export default function Home(props) {
                   <CardMedia
                     className={classes.cardMedia}
                     image="https://source.unsplash.com/KYUiTYOaE9M"
-                    title="homeImg1"
+                    title="Home Image 2"
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -142,7 +142,7 @@ export default function Home(props) {
                   <CardMedia
                     className={classes.cardMedia}
                     image="https://source.unsplash.com/vTL_qy03D1I"
-                    title="Image title"
+                    title="Home Image 3"
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
