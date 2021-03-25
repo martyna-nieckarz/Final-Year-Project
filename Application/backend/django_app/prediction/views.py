@@ -27,6 +27,9 @@ from torch.utils.data import DataLoader,Dataset
 from torchvision import models,transforms
 import torchvision.transforms.functional as TF
 
+"""
+    Skin Lession Classification
+"""
 class SkinCancerPredict(APIView):
 
     labelsTEST = ['akiec', 'bcc', 'bkl', 'df', 'nv', 'vasc','mel']
@@ -63,7 +66,11 @@ class SkinCancerPredict(APIView):
 
         return Response(imagePrediction, status=200) 
         
+"""
+    Uploading the image
+"""
 class UploadImage(APIView):
+
     def get_random_string(self, length):
         letters = string.digits
         result_str = ''.join(random.choice(letters) for i in range(length))
