@@ -1,2 +1,0 @@
-release: python manage.py migrate
-web: gunicorn skin-lesion-analysis-app.wsgi --log-file -

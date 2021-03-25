@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -65,20 +66,41 @@ REST_FRAMEWORK = {
     )
 }
 
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': [],
+#         'APP_DIRS': True,
+#         'OPTIONS': {
+#             'context_processors': [
+#                 'django.template.context_processors.debug',
+#                 'django.template.context_processors.request',
+#                 'django.contrib.auth.context_processors.auth',
+#                 'django.contrib.messages.context_processors.messages',
+#             ],
+#         },
+#     },
+# ]
 TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
+  {
+    "BACKEND": "django.template.backends.django.DjangoTemplates",
+    # Tell Django where to find Reacts index.html file
+    "DIRS": [os.path.join(BASE_DIR, "build")],
+    "APP_DIRS": True,
+    "OPTIONS": {
+      "context_processors": [
+      "django.template.context_processors.debug",
+      "django.template.context_processors.request",
+      "django.contrib.auth.context_processors.auth",
+      "django.contrib.messages.context_processors.messages",
+      ],
     },
+  },
+]
+
+STATICFILES_DIRS = [
+  # Tell Django where to look for React's static files (css, js)
+  os.path.join(BASE_DIR, "build/static"),
 ]
 
 WSGI_APPLICATION = 'mainapp.wsgi.application'
@@ -135,6 +157,7 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 #########################################
     ##  IMPORT LOCAL SETTINGS ##
