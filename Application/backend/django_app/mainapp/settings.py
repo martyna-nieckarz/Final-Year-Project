@@ -148,4 +148,4 @@ except ImportError:
 import django_heroku
 django_heroku.settings(locals())
 
-ALLOWED_HOSTS = ['react-django.herokuapp.com', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['*']
