@@ -48,7 +48,7 @@ export const authLogout = () => {
     if (token === undefined){
         localStorage.removeItem('expirationDate');
     } else {
-        axios.post(`${settings.API_SERVER}/api/auth/logout/`, {
+        axios.post(`https://skin-lesion-analysis-app.herokuapp.com/api/auth/logout/`, {
         }, {headers: {'Authorization': `Token ${token}`}} ).then(res => {console.log(res)}).catch(err => {console.log(err)});
         localStorage.removeItem('token');
         localStorage.removeItem('expirationDate');
@@ -78,7 +78,7 @@ export const authLogin = (username, password) => {
     console.log("LOGIN")
     return dispatch => {
         dispatch(authStart());
-        axios.post(`${settings.API_SERVER}/api/auth/login/`, {
+        axios.post(`https://skin-lesion-analysis-app.herokuapp.com/api/auth/login/`, {
             username: username,
             password: password
         })
@@ -98,7 +98,7 @@ export const authLogin = (username, password) => {
 
 export const authRegister = (username, email, password) => {
     console.log(username, email, password)
-    axios.post("http://localhost:8000/api/auth/register/", {
+    axios.post("https://skin-lesion-analysis-app.herokuapp.com/api/auth/register/", {
       "username": username,
       "email": email,
       "password": password
