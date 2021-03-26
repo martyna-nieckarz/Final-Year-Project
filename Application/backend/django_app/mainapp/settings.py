@@ -167,7 +167,7 @@ try:
 except ImportError:
     pass
 
-# Configure Django App for Heroku.
+# # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
 
