@@ -4,6 +4,11 @@ import Layout from './components/Layout';
 import {connect} from 'react-redux';
 import * as actions from './store/authActions';
 
+import axios from 'axios';
+
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
 function App(props) {
 
   // Similar to componentDidMount and componentDidUpdate:

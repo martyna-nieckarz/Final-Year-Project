@@ -24,7 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build",
+    "relocate": "react-scripts build && rm -rf ../../backend/django_app/build && mv -f build ../../backend/django_app"
   },
   "engines": {
       "node": "12.16.2",
