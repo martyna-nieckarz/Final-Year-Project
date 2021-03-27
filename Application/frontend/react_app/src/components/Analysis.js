@@ -77,7 +77,7 @@ export default class Analysis extends React.Component {
                     </Container >
                 </div>
 
-                <div style={{width: "100%", display: "flex", marginLeft: "5%", marginRight: "0%", paddingLeft: '80px'}}>
+                <div style={{width: "100%", display: "flex", marginLeft: "5%", paddingLeft: '80px'}}>
                     <div style={{display: "inline-block", width: "45%", float: "left"}}>
                         <Container maxWidth="md" style={{   paddingBottom: '30px'}}>
                             <h2 style={{textAlign: 'center', margin: 'auto', color: 'gray', paddingBottom: '20px'}}>
@@ -98,7 +98,7 @@ export default class Analysis extends React.Component {
                         <hr></hr>
                         <Container  maxWidth="md" style={{alignItems: "center", margin: 'auto', color: 'gray', maxWidth: '100%', paddingBottom: '20px', paddingTop: '20px'}}> 
                             <h2 style={{ textAlign: 'center', display: 'block', margin: 'auto', paddingBottom: '20px'}}>
-                                2. Hit analyze to receive your result
+                                2. Hit analyze to receive your result (allow 20 seconds to load)
                             </h2>
                             <Button style={{textAlign: 'right', display: 'block', margin: 'auto'}} variant="contained" color="secondary" onClick={this.analyseImage.bind(this)}>
                                     Analyze
