@@ -6,6 +6,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 
+import * as settings from '../settings';
+
 const axios = require("axios");
 const cards = [1];
 
@@ -32,7 +34,7 @@ export default class Analysis extends React.Component {
                 'content-type': 'multipart/form-data'
             }
         };
-        axios.post("http://localhost:8000/api/upload/", formData, config)
+        axios.post(`${settings.API_SERVER}/api/upload/`, formData, config)
             .then((response) => {
                 console.log(response)
                 alert("The file is successfully uploaded");
@@ -45,7 +47,7 @@ export default class Analysis extends React.Component {
     }
 
     analyseImage() {
-        axios.post("http://localhost:8000/api/predict/", {
+        axios.post(`${settings.API_SERVER}/api/predict/`, {
             "imageId": this.state.uploadedImageId,
             "analysisResult": this.state.resultData
             
